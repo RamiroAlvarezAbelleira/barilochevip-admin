@@ -12,7 +12,6 @@ const updateOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 equipo: {...params.data}
             }
-            console.log(`Parametros que llegan al updateOneCalle ${newParams}`)
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.UPDATE).then(
                 (res) => {
                     return {data: {id: params.id}}
@@ -23,7 +22,16 @@ const updateOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 category: {name: params.data.name}
             }
-            console.log(`Parametros que llegan al updateOneCalle ${JSON.stringify(newParams)}`)
+            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.UPDATE).then(
+                (res) => {
+                    return {data: {id: params.id}}
+                }
+            )
+        case PAGES.BRANDS:
+            finalUrl = `${apiUrl}/marcas/${params.id}`
+            newParams = {
+                marca: {name: params.data.name}
+            }
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.UPDATE).then(
                 (res) => {
                     return {data: {id: params.id}}

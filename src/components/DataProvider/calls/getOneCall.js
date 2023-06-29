@@ -9,11 +9,15 @@ const getOneCall = async (resource, params, apiUrl) => {
         case PAGES.EQUIPMENT:
             finalUrl = `${apiUrl}/equipos/${params.id}`
             return httpClient(finalUrl).then(({headers, json}) => {
-                console.log(json)
                 return {data: json.data}
             })
         case PAGES.CATEGORIES:
             finalUrl = `${apiUrl}/categories/${params.id}`
+            return httpClient(finalUrl).then(({headers, json}) => {
+                return {data: json.data}
+            })
+        case PAGES.BRANDS:
+            finalUrl = `${apiUrl}/marcas/${params.id}`
             return httpClient(finalUrl).then(({headers, json}) => {
                 return {data: json.data}
             })

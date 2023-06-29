@@ -16,6 +16,11 @@ const getListCall = async (resource, params, apiUrl) => {
             return httpClient(finalUrl).then(({headers, json}) => {
                 return {data: json, total: json.length}
             }) 
+        case PAGES.BRANDS:
+            finalUrl = `${apiUrl}/marcas`
+            return httpClient(finalUrl).then(({headers, json}) => {
+                return {data: json, total: json.length}
+            }) 
         default: 
             return Promise.reject();
     }

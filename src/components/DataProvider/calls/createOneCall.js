@@ -13,7 +13,6 @@ const createOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 equipo: {...params.data}
             }
-            console.log(`Parametros que llegan al createOneCalle ${newParams}`)
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => (console.log('esta es la respuesta ' + res))
             )
@@ -22,9 +21,16 @@ const createOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 category: {...params.data}
             }
-            console.log(`Parametros que llegan al createOneCalle ${JSON.stringify(newParams)}`)
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => {return {data: {id: res.json.category.id}}}
+            )
+        case PAGES.BRANDS:
+            finalUrl = `${apiUrl}/marcas`
+            newParams = {
+                marca: {...params.data}
+            }
+            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
+                (res) => {return {data: {id: res.json.marca.id}}}
             )
         default: 
             return Promise.reject();

@@ -30,7 +30,6 @@ const httpClient = async (url, params, actionType) => {
         return response;
       } catch (error) {
         // Handle error
-        console.log(options.body)
         console.error("API request failed:", error);
         throw new Error("API request failed");
       }
