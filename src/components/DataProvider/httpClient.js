@@ -9,12 +9,12 @@ const httpClient = async (url, params, actionType) => {
 
     switch(actionType) {
         case ACTION_TYPE_VALUES.CREATE:
-            const createInfo = JSON.stringify(params.data);
+            const createInfo = JSON.stringify(params);
             options.body = createInfo;
             options.method = FETCH_ACTIONS_TYPE_VALUES.POST;
             break
         case ACTION_TYPE_VALUES.UPDATE:
-            const updateInfo = JSON.stringify(params.data);
+            const updateInfo = JSON.stringify(params);
             options.body = updateInfo;
             options.method = FETCH_ACTIONS_TYPE_VALUES.PUT;
             break
@@ -30,7 +30,7 @@ const httpClient = async (url, params, actionType) => {
         return response;
       } catch (error) {
         // Handle error
-        console.log(url)
+        console.log(options.body)
         console.error("API request failed:", error);
         throw new Error("API request failed");
       }
