@@ -14,7 +14,7 @@ const createOneCall = async (resource, params, apiUrl) => {
                 equipo: {...params.data}
             }
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
-                (res) => (console.log('esta es la respuesta ' + res))
+                (res) => {return {data: {id: res.json.equipo.id}}}
             )
         case PAGES.CATEGORIES:
             finalUrl = `${apiUrl}/categories`

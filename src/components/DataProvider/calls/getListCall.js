@@ -1,4 +1,6 @@
 import { PAGES } from "../../../enum/pagesEnum";
+import getBrands from "../../../helpers/getBrands";
+import getCategories from "../../../helpers/getCategories";
 import { httpClient } from "../httpClient";
 
 
@@ -7,9 +9,11 @@ const getListCall = async (resource, params, apiUrl) => {
 
     switch(resource) {
         case PAGES.EQUIPMENT:
+            getCategories(apiUrl)
+            getBrands(apiUrl)
             finalUrl = `${apiUrl}/equipos`
             return httpClient(finalUrl).then(({headers, json}) => {
-                return {data: json.data}
+                return {data: json, total: json.length}
             }) 
         case PAGES.CATEGORIES:
             finalUrl = `${apiUrl}/categories`
