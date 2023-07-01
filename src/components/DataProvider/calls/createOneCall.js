@@ -32,6 +32,15 @@ const createOneCall = async (resource, params, apiUrl) => {
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => {return {data: {id: res.json.marca.id}}}
             )
+        case PAGES.BOOKINGS:
+            finalUrl = `${apiUrl}/bookings`
+            newParams = {
+                booking: {...params.data}
+            }
+            console.log(JSON.stringify(newParams))
+            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
+                (res) => {return {data: {id: res.json.booking.id}}}
+            )
         default: 
             return Promise.reject();
     }
