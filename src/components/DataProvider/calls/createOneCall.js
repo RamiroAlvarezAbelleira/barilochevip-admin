@@ -9,13 +9,16 @@ const createOneCall = async (resource, params, apiUrl) => {
 
     switch(resource) {
         case PAGES.EQUIPMENT:
-            finalUrl = `${apiUrl}/equipos`
+            finalUrl = `${apiUrl}/equipos`;
             newParams = {
-                equipo: {...params.data}
-            }
-            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
-                (res) => {return {data: {id: res.json.equipo.id}}}
-            )
+                equipo: { ...params.data  
+                }
+            };
+            console.log("createOneCall params: " + JSON.stringify(newParams))
+            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then((res) => {
+                // const equipoId = res.json.equipo.id;
+                return { data: { id: params.id } };
+            });
         case PAGES.CATEGORIES:
             finalUrl = `${apiUrl}/categories`
             newParams = {
