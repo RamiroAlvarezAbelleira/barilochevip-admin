@@ -1,4 +1,4 @@
-import { Edit, SelectInput, SimpleForm, TextInput, required } from "react-admin"
+import { Edit, ImageField, ImageInput, SelectInput, SimpleForm, TextInput, required } from "react-admin"
 
 const EditEquipment = (props) => {
   const categories = JSON.parse(localStorage.getItem('categories'));
@@ -12,11 +12,15 @@ const EditEquipment = (props) => {
             <TextInput fullWidth label='Stock Total' source='stock_total' validate={[required("Campo requerido")]}/>
             <SelectInput fullWidth label='Categoria' source='category.id' choices={categories} validate={[required("Campo requerido")]} />
             <SelectInput fullWidth label='Marca' source='marca.id' choices={marcas} validate={[required("Campo requerido")]} />
-            {/* <ImageInput placeholder={<p>Drop your file here!</p>} source="image"
-              label="Imagen del Equipo"
-              accept="image/*"
-              validate={[required("Campo requerido")]}
-              multiple={true} /> */}
+            <ImageInput
+            source="images"
+            label="Imagen del Equipo"
+            accept="image/*"
+            multiple={true}
+            validate={[required("Campo requerido")]}
+            >
+              <ImageField source="src" title="title" />
+            </ImageInput>
         </SimpleForm>
     </Edit>
   )

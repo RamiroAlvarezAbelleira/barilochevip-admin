@@ -42,6 +42,33 @@ const httpClient = async (url, params, actionType) => {
             options.method = FETCH_ACTIONS_TYPE_VALUES.POST;
             break;
         case ACTION_TYPE_VALUES.UPDATE:
+            if (params?.equipo) {
+                const formData = new FormData();
+                formData.append("equipo[name]", params.equipo.name);
+                formData.append("equipo[price]", params.equipo.price);
+                formData.append("equipo[description]", params.equipo.description);
+                formData.append("equipo[stock_total]", params.equipo.stock_total);
+                formData.append("equipo[category_id]", params.equipo.category_id);
+                formData.append("equipo[marca_id]", params.equipo.marca_id);
+                
+                // Append image files to the formData
+                if (params.equipo.images && params.equipo.images.length > 0) {
+                    params.equipo.images.forEach((image, index) => {
+                        formData.append(`equipo[images][]`, image.rawFile);;
+                    });
+                }
+                console.log("images " + JSON.stringify(params.equipo.images))
+                axios.put(url, formData, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
+                  }).then(response => {
+                    console.log('response ' + JSON.stringify(response))
+                  }).catch(error => {
+                    console.log('error ' + JSON.stringify(error))
+                  });
+                  break
+            }
             const updateInfo = JSON.stringify(params);
             options.body = updateInfo;
             options.method = FETCH_ACTIONS_TYPE_VALUES.PUT;
