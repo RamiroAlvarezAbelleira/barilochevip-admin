@@ -1,4 +1,4 @@
-import { Create, DateTimeInput, SimpleForm, TextField, required} from "react-admin"
+import { Create, DateTimeInput, SimpleForm, TextInput, required} from "react-admin"
 
 const CreateEquipmentBooking = (props) => {
   return (
@@ -14,10 +14,12 @@ const CreateEquipmentBooking = (props) => {
             label="Fecha de fin"
             validate={required("Campo requerido")}
             />
-            <TextField
+            <TextInput
             source="equipo_id"
             defaultValue={props.id}
-            hidden
+            />
+            <TextInput
+            source="quantity"
             />
         </SimpleForm>
     </Create>

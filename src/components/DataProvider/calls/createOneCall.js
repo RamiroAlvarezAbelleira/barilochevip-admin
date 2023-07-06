@@ -14,9 +14,7 @@ const createOneCall = async (resource, params, apiUrl) => {
                 equipo: { ...params.data  
                 }
             };
-            console.log("createOneCall params: " + JSON.stringify(newParams))
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then((res) => {
-                // const equipoId = res.json.equipo.id;
                 return { data: { id: params.id } };
             });
         case PAGES.CATEGORIES:
@@ -40,7 +38,6 @@ const createOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 booking: {...params.data}
             }
-            console.log(JSON.stringify(newParams))
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => {return {data: {id: res.json.booking.id}}}
             )

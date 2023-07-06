@@ -1,4 +1,4 @@
-import { ArrayField, Datagrid, DateField, ImageField, Show, Tab, TabbedShowLayout, TextField } from 'react-admin';
+import { ArrayField, Datagrid, DateField, DeleteButton, ImageField, Show, Tab, TabbedShowLayout, TextField } from 'react-admin';
 import CreateEquipmentBooking from './CreateEquipmentBooking';
 import { useParams } from 'react-router-dom';
 
@@ -26,6 +26,8 @@ const ShowEquipment = (props) => {
               <TextField source="id" label="Id" />
               <DateField source="start_date" label="Fecha de inicio" />
               <DateField source="end_date" label="Fecha de fin" />
+              <TextField source="quantity" label="Cantidad" />
+              <DeleteButton resource='bookings'/>
             </Datagrid>
           </ArrayField>
         </Tab>

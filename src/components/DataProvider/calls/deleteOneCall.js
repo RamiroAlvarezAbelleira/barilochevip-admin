@@ -22,6 +22,11 @@ const deleteOneCall = async (resource, params, apiUrl) => {
             return httpClient(finalUrl, params, ACTION_TYPE_VALUES.DELETE).then(
                 (res) => ({data: {id}})
             )
+        case PAGES.BOOKINGS:
+            finalUrl = `${apiUrl}/bookings/${id}`
+            return httpClient(finalUrl, params, ACTION_TYPE_VALUES.DELETE).then(
+                (res) => {return {data: {id}}}
+            )
         default: Promise.reject();
     }
 }

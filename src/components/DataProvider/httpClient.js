@@ -25,7 +25,6 @@ const httpClient = async (url, params, actionType) => {
                         formData.append(`equipo[images][]`, image.rawFile);;
                     });
                 }
-                console.log("images " + JSON.stringify(params.equipo.images))
                 axios.post("http://[::1]:3000/api/v1/equipos", formData, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
@@ -52,12 +51,11 @@ const httpClient = async (url, params, actionType) => {
                 formData.append("equipo[marca_id]", params.equipo.marca_id);
                 
                 // Append image files to the formData
-                if (params.equipo.images && params.equipo.images.length > 0) {
+                if (params.equipo.images && params.equipo.images.length > 0 && params.equipo.images[0].rawFile) {
                     params.equipo.images.forEach((image, index) => {
                         formData.append(`equipo[images][]`, image.rawFile);;
                     });
                 }
-                console.log("images " + JSON.stringify(params.equipo.images))
                 axios.put(url, formData, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
