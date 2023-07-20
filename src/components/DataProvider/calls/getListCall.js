@@ -25,6 +25,11 @@ const getListCall = async (resource, params, apiUrl) => {
             return httpClient(finalUrl).then(({headers, json}) => {
                 return {data: json, total: json.length}
             }) 
+        case PAGES.BOOKINGS:
+            finalUrl = `${apiUrl}/bookings`
+            return httpClient(finalUrl).then(({headers, json}) => {
+                return {data: json, total: json.length}
+            }) 
         default: 
             return Promise.reject();
     }

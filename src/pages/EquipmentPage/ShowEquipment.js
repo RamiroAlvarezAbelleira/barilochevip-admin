@@ -1,4 +1,4 @@
-import { ArrayField, Datagrid, DateField, DeleteButton, ImageField, Show, Tab, TabbedShowLayout, TextField } from 'react-admin';
+import { ArrayField, Datagrid, DateField, DeleteButton, EditButton, ImageField, Show, Tab, TabbedShowLayout, TextField } from 'react-admin';
 import CreateEquipmentBooking from './CreateEquipmentBooking';
 import Calendar from 'react-calendar';
 import { useParams } from 'react-router-dom';
@@ -35,9 +35,9 @@ const ShowEquipment = (props) => {
       <div>
         {view === 'month' && book.quantity < bookings.stock_total ? (
           <div>
-            <div style={{color: "green"}}>{bookings.stock_total - book.quantity} Disponibles</div>
+            <div style={{color: "green", padding: "10px"}}><span style={{fontSize: "1rem"}}>{bookings.stock_total - book.quantity}</span> Disponibles</div>
           </div>
-        ) : (<div style={{color: "red"}}>
+        ) : (<div style={{color: "red", padding: "10px"}}>
           Sin Stock
         </div>)}
       </div>
@@ -70,9 +70,9 @@ const ShowEquipment = (props) => {
           <ArrayField source="bookings" label="Reservas">
             <Datagrid>
               <TextField source="id" label="Id" />
-              <DateField source="start_date" label="Fecha de inicio" />
-              <DateField source="end_date" label="Fecha de fin" />
+              <DateField source="start_date" label="Fecha de reserva" />
               <TextField source="quantity" label="Cantidad" />
+              <EditButton resource='bookings'/>
               <DeleteButton resource='bookings'/>
             </Datagrid>
           </ArrayField>

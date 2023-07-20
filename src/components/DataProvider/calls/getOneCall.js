@@ -24,6 +24,11 @@ const getOneCall = async (resource, params, apiUrl) => {
             return httpClient(finalUrl).then(({headers, json}) => {
                 return {data: json.data}
             })
+        case PAGES.BOOKINGS:
+            finalUrl = `${apiUrl}/bookings/${id}`
+            return httpClient(finalUrl).then(({headers, json}) => {
+                return {data: json.data}
+            })
         default:
             return Promise.reject();
     }

@@ -11,7 +11,8 @@ const createOneCall = async (resource, params, apiUrl) => {
         case PAGES.EQUIPMENT:
             finalUrl = `${apiUrl}/equipos`;
             newParams = {
-                equipo: { ...params.data  
+                equipo: { ...params.data,
+                    end_date: params.data.start_date
                 }
             };
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then((res) => {
@@ -36,8 +37,9 @@ const createOneCall = async (resource, params, apiUrl) => {
         case PAGES.BOOKINGS:
             finalUrl = `${apiUrl}/bookings`
             newParams = {
-                booking: {...params.data}
+                booking: {...params.data, end_date: params.data.start_date}
             }
+            console.log(JSON.stringify(params.data))
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => {return {data: {id: res.json.booking.id}}}
             )

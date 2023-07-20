@@ -1,10 +1,9 @@
-import { Create, DateInput, SimpleForm, TextInput, required} from "react-admin"
+import { DateInput, Edit, SimpleForm, TextInput, required } from "react-admin"
 
-const CreateEquipmentBooking = (props) => {
-
+const EditEquipmentBooking = (props) => {
   return (
-    <Create {...props} resource='bookings' >
-        <SimpleForm redirect={"show"}>
+    <Edit {...props} title='Actualizar Reserva'>
+        <SimpleForm redirect='show'>
             <DateInput
             source="start_date"
             label="Fecha de inicio"
@@ -19,7 +18,7 @@ const CreateEquipmentBooking = (props) => {
             source="quantity"
             />
         </SimpleForm>
-    </Create>
+    </Edit>
   )
 }
-export default CreateEquipmentBooking
+export default EditEquipmentBooking

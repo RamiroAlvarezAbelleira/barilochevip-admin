@@ -8,6 +8,7 @@ export const ListEquipment = (props) => {
         {...props}
         >
             <Datagrid rowClick='show'>
+                <TextField source="id" label='Id' />
                 <TextField source="name" label='Nombre' />
                 <TextField source="price" label='Precio por dia' />
                 <TextField source="description" label='Descripcion' />

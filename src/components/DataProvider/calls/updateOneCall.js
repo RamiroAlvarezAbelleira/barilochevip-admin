@@ -38,6 +38,16 @@ const updateOneCall = async (resource, params, apiUrl) => {
                     return {data: {id}}
                 }
             )
+        case PAGES.BOOKINGS:
+            finalUrl = `${apiUrl}/bookings/${id}`
+            newParams = {
+                booking: {...params.data}
+            }
+            return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.UPDATE).then(
+                (res) => {
+                    return {data: {id}}
+                }
+            )
         default: 
             return Promise.reject();
     }
