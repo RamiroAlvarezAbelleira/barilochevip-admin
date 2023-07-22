@@ -1,10 +1,14 @@
-import { ArrayField, Datagrid, DateField, DeleteButton, EditButton, ImageField, Show, Tab, TabbedShowLayout, TextField } from 'react-admin';
+import { ArrayField, Datagrid, DateField, EditButton, ImageField, Show, Tab, TabbedShowLayout, TextField, useShowController } from 'react-admin';
 import CreateEquipmentBooking from './CreateEquipmentBooking';
 import Calendar from 'react-calendar';
 import { useParams } from 'react-router-dom';
+import { CustomDeleteButton } from '../../components/CustomDeleteButton';
+import "./equipmentPage.css"
 
 const ShowEquipment = (props) => {
   const { id } = useParams();
+  const { record } = useShowController(props)
+  const bookingsToDelete = record.bookings || []
   const bookings = JSON.parse(localStorage.getItem('bookings'))
 
   const renderBookingTileContent = ({ date, view }) => {
@@ -67,17 +71,28 @@ const ShowEquipment = (props) => {
             view="month"
             showNeighboringMonth={false}
           />
-          <ArrayField source="bookings" label="Reservas">
-            <Datagrid>
-              <TextField source="id" label="Id" />
-              <DateField source="start_date" label="Fecha de reserva" />
-              <TextField source="quantity" label="Cantidad" />
-              <EditButton resource='bookings'/>
-              <DeleteButton resource='bookings'/>
-            </Datagrid>
-          </ArrayField>
+          <div className='bookings-array'>
+            <ArrayField source="bookings" label="Reservas">
+              <Datagrid>
+                <TextField source="id" label="Id" />
+                <DateField source="start_date" label="Fecha de reserva" />
+                <TextField source="quantity" label="Cantidad" />
+                <EditButton resource='bookings'/>
+              </Datagrid>
+            </ArrayField>
+            <div className='bookings-delete-buttons'>
+            {
+              bookingsToDelete.map((booking) => (
+                <div key={booking.id}>
+                  <span>Id: {booking.id}</span>
+                  <CustomDeleteButton record={booking}/>
+                </div>
+              ))
+            }
+            </div>
+          </div>
         </Tab>
-        <Tab label="Reservar">
+        <Tab label="+ Nueva reserva">
           <CreateEquipmentBooking id={id} />
         </Tab>
       </TabbedShowLayout>

@@ -39,7 +39,6 @@ const createOneCall = async (resource, params, apiUrl) => {
             newParams = {
                 booking: {...params.data, end_date: params.data.start_date}
             }
-            console.log(JSON.stringify(params.data))
             return httpClient(finalUrl, newParams, ACTION_TYPE_VALUES.CREATE).then(
                 (res) => {return {data: {id: res.json.booking.id}}}
             )

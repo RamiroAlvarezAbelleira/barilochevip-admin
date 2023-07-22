@@ -1,0 +1,14 @@
+.bookings-array {
+    display:flex;
+}
+
+.bookings-delete-buttons{
+    padding-top: 37px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookings-delete-buttons div {
+    padding: 6.7px;
+    margin-left: 30px;
+}
