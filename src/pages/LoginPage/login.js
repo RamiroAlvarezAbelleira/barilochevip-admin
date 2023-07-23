@@ -41,8 +41,11 @@ const CustomLogin = () => {
     e.preventDefault();
     const passwIsOk = passwIsValid();
     if (passwIsOk) {
-      login({ username: email, password }).catch(() =>
-        notify("Invalid email or password", { type: "error" })
+      login({ email, password }).catch((error) => {
+        if (error) {
+          notify(`Invalid email or password ${error.message}`, { type: "error" })
+        } 
+      }
       );
     }
   };

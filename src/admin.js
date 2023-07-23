@@ -6,11 +6,12 @@ import CategoryPage from './pages/CategoryPage';
 import BrandPage from './pages/BrandPage';
 import BookingsPage from './pages/BookingsPage';
 import CustomLogin from './pages/LoginPage/login';
+import authProvider from './components/Authentication/authProvider';
 
 const dataProvider = customDataProvider('http://[::1]:3000/api/v1');
 
 const App = () => (
-    <Admin dataProvider={dataProvider} loginPage={CustomLogin}>
+    <Admin dataProvider={dataProvider} loginPage={CustomLogin} authProvider={authProvider}>
       <Resource name="equipment" {...EquipmentPage} />
       <Resource name="categories" {...CategoryPage} />
       <Resource name="brands" {...BrandPage} />
