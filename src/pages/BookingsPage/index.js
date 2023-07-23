@@ -1,11 +1,9 @@
-import ListEquipmentBooking from "./ListEquipmentBooking";
 import EditEquipmentBooking from "./EditEquipmentBooking";
 import ShowEquipmentBooking from "./ShowEquipmentBooking";
 
 const BrandPage = {
     show: ShowEquipmentBooking,
-    edit: EditEquipmentBooking,
-    list: ListEquipmentBooking
+    edit: EditEquipmentBooking
 };
 
 export default BrandPage;

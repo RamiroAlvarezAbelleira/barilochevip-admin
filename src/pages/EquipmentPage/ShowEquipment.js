@@ -8,7 +8,7 @@ import "./equipmentPage.css"
 const ShowEquipment = (props) => {
   const { id } = useParams();
   const { record } = useShowController(props)
-  const bookingsToDelete = record.bookings || []
+  const bookingsToDelete = record?.bookings || []
   const bookings = JSON.parse(localStorage.getItem('bookings'))
 
   const renderBookingTileContent = ({ date, view }) => {

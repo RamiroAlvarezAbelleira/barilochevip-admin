@@ -39,7 +39,7 @@ const updateOneCall = async (resource, params, apiUrl) => {
                 }
             )
         case PAGES.BOOKINGS:
-            finalUrl = `${apiUrl}/bookings/${id}`
+            finalUrl = `${apiUrl}/bookings/${params.data.id}`
             newParams = {
                 booking: {...params.data}
             }
