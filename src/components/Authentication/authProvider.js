@@ -33,8 +33,32 @@ export default {
     },
     // called when the user clicks on the logout button
     logout: () => {
-      localStorage.removeItem("token");
-      return Promise.resolve();
+        const token = JSON.parse(localStorage.getItem("token"))
+        const request = new Request(
+            "http://localhost:3000/auth/sign_out",
+            {
+                mode: "cors",
+                method: "DELETE",
+                headers: new Headers({
+                    "content-type": "application/json; charset=UTF-8",
+                    "authorization": token
+                  })
+            }
+        )
+        return fetch(request)
+            .then((response) => {
+                console.log(response)
+                return response.json()
+            })
+            .then((response) => {
+                console.log(response)
+                if (response.success) {
+                    localStorage.removeItem("token");
+                    return Promise.resolve();
+                } else {
+                    return Promise.reject()
+                }
+            })
     },
     // called when the API returns an error
     checkError: ({ status }) => {
