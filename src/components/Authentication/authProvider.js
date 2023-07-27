@@ -16,14 +16,13 @@ export default {
       );
       return fetch(request)
         .then((response) => {
-            token = JSON.stringify(response.headers.get("authorization"))
+            token = response.headers.get("authorization")
           if (response.status < 200 || response.status >= 300) {
             throw new Error(response.statusText);
           }
           return response.json();
         })
         .then((response) => {
-            // console.log(`second response`, response.headers.get("authorization"))
           if (token !== '') {
             localStorage.setItem("token", token);
           } else {
@@ -33,7 +32,7 @@ export default {
     },
     // called when the user clicks on the logout button
     logout: () => {
-        const token = JSON.parse(localStorage.getItem("token"))
+        const token = localStorage.getItem("token")
         const request = new Request(
             "http://localhost:3000/auth/sign_out",
             {
@@ -47,11 +46,9 @@ export default {
         )
         return fetch(request)
             .then((response) => {
-                console.log(response)
                 return response.json()
             })
             .then((response) => {
-                console.log(response)
                 if (response.success) {
                     localStorage.removeItem("token");
                     return Promise.resolve();

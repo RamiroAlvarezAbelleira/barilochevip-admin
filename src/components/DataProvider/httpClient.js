@@ -4,8 +4,9 @@ import axios from "axios"
 
 
 const httpClient = async (url, params, actionType) => {
+    const token = localStorage.getItem("token")
     const options = {
-        headers: new Headers ({Accept: "application/json"})
+        headers: new Headers ({Accept: "application/json",Authorization: token})
     }
 
     switch(actionType) {
@@ -83,8 +84,8 @@ const httpClient = async (url, params, actionType) => {
         return response;
       } catch (error) {
         // Handle error
-        console.error("API request failed:", error);
-        throw new Error("API request failed");
+        console.error("API request failed:", error.message);
+        throw new Error(`API request failed ${error.message}`);
       }}
 }
 
