@@ -28,7 +28,8 @@ const httpClient = async (url, params, actionType) => {
                 }
                 axios.post("http://[::1]:3000/api/v1/equipos", formData, {
                     headers: {
-                      'Content-Type': 'multipart/form-data'
+                      'Content-Type': 'multipart/form-data',
+                      "Authorization": token
                     }
                   }).then(response => {
                     console.log('response ' + JSON.stringify(response))
@@ -59,7 +60,8 @@ const httpClient = async (url, params, actionType) => {
                 }
                 axios.put(url, formData, {
                     headers: {
-                      'Content-Type': 'multipart/form-data'
+                      'Content-Type': 'multipart/form-data',
+                      "Authorization": token
                     }
                   }).then(response => {
                     console.log('response ' + JSON.stringify(response))
