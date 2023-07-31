@@ -8,7 +8,7 @@ import BookingsPage from './pages/BookingsPage';
 import CustomLogin from './pages/LoginPage/login';
 import authProvider from './components/Authentication/authProvider';
 
-const dataProvider = customDataProvider('http://[::1]:3000/api/v1');
+const dataProvider = customDataProvider('https://barilochevip-be-production.up.railway.app/api/v1');
 
 const App = () => (
     <Admin dataProvider={dataProvider} loginPage={CustomLogin} authProvider={authProvider}>

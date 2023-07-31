@@ -7,7 +7,7 @@ const EditEquipmentBooking = (props) => {
   const redirect = useRedirect();
 
   const handleEditSuccess = (data) => {
-    updateOneCall(PAGES.BOOKINGS, {data: {...data}}, "http://[::1]:3000/api/v1")
+    updateOneCall(PAGES.BOOKINGS, {data: {...data}}, "https://barilochevip-be-production.up.railway.app/api/v1")
     notify('Reserva Editada Exitosamente!')
     redirect(`/equipment/${data.equipo_id}/show/1`);
   };

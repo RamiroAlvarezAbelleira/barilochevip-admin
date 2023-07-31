@@ -26,15 +26,15 @@ const httpClient = async (url, params, actionType) => {
                         formData.append(`equipo[images][]`, image.rawFile);;
                     });
                 }
-                axios.post("http://[::1]:3000/api/v1/equipos", formData, {
+                axios.post("https://barilochevip-be-production.up.railway.app/api/v1/equipos", formData, {
                     headers: {
                       'Content-Type': 'multipart/form-data',
                       "Authorization": token
                     }
                   }).then(response => {
-                    console.log('response ' + JSON.stringify(response))
+                    // console.log('response ' + JSON.stringify(response))
                   }).catch(error => {
-                    console.log('error ' + JSON.stringify(error))
+                    // console.log('error ' + JSON.stringify(error))
                   });
                   break
             }
@@ -64,9 +64,9 @@ const httpClient = async (url, params, actionType) => {
                       "Authorization": token
                     }
                   }).then(response => {
-                    console.log('response ' + JSON.stringify(response))
+                    // console.log('response ' + JSON.stringify(response))
                   }).catch(error => {
-                    console.log('error ' + JSON.stringify(error))
+                    // console.log('error ' + JSON.stringify(error))
                   });
                   break
             }

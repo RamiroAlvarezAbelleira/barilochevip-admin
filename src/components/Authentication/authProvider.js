@@ -4,7 +4,7 @@ export default {
     login: ({ email, password }) => {
         let token;
       const request = new Request(
-        "http://[::1]:3000/auth/sign_in",
+        "https://barilochevip-be-production.up.railway.app/auth/sign_in",
         {
           mode: "cors",
           method: "POST",
@@ -34,7 +34,7 @@ export default {
     logout: () => {
         const token = localStorage.getItem("token")
         const request = new Request(
-            "http://localhost:3000/auth/sign_out",
+            "https://barilochevip-be-production.up.railway.app/auth/sign_out",
             {
                 mode: "cors",
                 method: "DELETE",

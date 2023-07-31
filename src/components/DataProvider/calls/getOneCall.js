@@ -12,7 +12,15 @@ const getOneCall = async (resource, params, apiUrl) => {
             getBookings(apiUrl, id)
             finalUrl = `${apiUrl}/equipos/${id}`
             return httpClient(finalUrl).then(({headers, json}) => {
-                return {data: json}
+                let newEquipo = {};
+                let newImages = [];
+                json.images.forEach(image => {
+                    const startIndex = image.image_url.indexOf('/rails/');
+                    const cutString = image.image_url.substring(startIndex);
+                    newImages.push({image_url: `https://barilochevip-be-production.up.railway.app${cutString}`})
+                })
+                newEquipo = {...json, images: newImages}
+                return {data: newEquipo}
             })
         case PAGES.CATEGORIES:
             finalUrl = `${apiUrl}/categories/${id}`

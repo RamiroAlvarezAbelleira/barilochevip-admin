@@ -6,7 +6,7 @@ const CustomDeleteButton = ({record}) => {
 
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this record?')) {
-      deleteOneCall("bookings", record, "http://[::1]:3000/api/v1")
+      deleteOneCall("bookings", record, "https://barilochevip-be-production.up.railway.app/api/v1")
     }
   };
 

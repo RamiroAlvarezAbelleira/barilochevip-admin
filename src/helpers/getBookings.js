@@ -18,7 +18,7 @@ const getBookings = (apiUrl, id) => {
     items.forEach((item) => {
       if (item.end_date < moment().toISOString().split('T')[0]) {
         console.log('entre al delete')
-        deleteOneCall(PAGES.BOOKINGS, {id: item.id}, 'http://[::1]:3000/api/v1')
+        deleteOneCall(PAGES.BOOKINGS, {id: item.id}, 'https://barilochevip-be-production.up.railway.app/api/v1')
       } else {
         filteredItems.push(item)
       }
