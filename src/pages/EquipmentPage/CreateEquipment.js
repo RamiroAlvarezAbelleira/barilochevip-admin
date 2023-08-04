@@ -17,7 +17,7 @@ const CreateEquipment = (props) => {
             label="Imagen del Equipo"
             accept="image/*"
             multiple={true}
-            // validate={[required("Campo requerido")]}
+            validate={[required("Campo requerido")]}
             >
               <ImageField source="src" title="title" />
             </ImageInput>

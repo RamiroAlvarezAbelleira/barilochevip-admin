@@ -53,9 +53,11 @@ const httpClient = async (url, params, actionType) => {
                 formData.append("equipo[marca_id]", params.equipo.marca_id);
                 
                 // Append image files to the formData
-                if (params.equipo.images && params.equipo.images.length > 0 && params.equipo.images[0].rawFile) {
+                if (params.equipo.images && params.equipo.images.length > 0) {
                     params.equipo.images.forEach((image, index) => {
+                      if (image.rawFile) {
                         formData.append(`equipo[images][]`, image.rawFile);;
+                      }
                     });
                 }
                 axios.put(url, formData, {
